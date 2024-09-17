@@ -45,6 +45,12 @@ U ovom folderu u nekom od dostupnih tekst editora otvoriti fajl **socfpga_cyclon
 ```
 
 Ovakvim izledom dts fajla smo omogućili I2C2 magistralu.
+Da bi sve funkcionisalo, potrebno je prekompajlirati ovaj dts fajl komandom
+```
+make dtbs
+```
+
+I dobije .dtb fajl, koji se nalazi u istom folderu kao i nas .dts fajl prekopirati na FAT32 particiju kartice.
 
 > **Note**: Obavezno dodati i2c1 čvor, jer u slučaju da njega ne dodamo, I2C2 magistrala neće biti dostupna.
 
