@@ -94,5 +94,50 @@ cp <path-to-linux-src>/arch/arm/configs/de1_soc_defconfig board/terasic/de1soc_c
 cp <path-to-linux-src>/arch/arm/boot/dts/socfpga_cyclone5_de1_soc.dts board/terasic/de1soc_cyclone5/
 ```
 
+Nakon ovog kopiranje potrebno je izvršiti komandu
+
+```
+make
+```
+
+Sada je potrebno da opišemo naš uređaj u i2c2 čvoru našeg .dts fajla. Modifikovati i2c2 čvor tako da ima sledeći izgled
+
+```dts
+&i2c2 {
+	status = "okay";
+ 
+	adc: adc@48 {
+            compatible = "ti,ads7828";
+            reg = <0x48>;
+            ti,differential-input;
+			vref-supply = <&regulator_3_3v>;
+			ti,enable-channels = <0 1>;	
+			#io-channel-cells = <1>;
+
+			joystick: adc-joystick {
+					compatible = "adc-joystick";
+					io-channels = <&adc 0>,
+								<&adc 1>;
+					#address-cells = <1>;
+					#size-cells = <0>;
+
+					axis@0 {
+							reg = <0>;
+							linux,code = <ABS_X>;
+							abs-range = <0 3300>;
+							abs-fuzz = <4>;
+							abs-flat = <200>;
+					};
+					axis@1 {
+							reg = <1>;
+							linux,code = <ABS_Y>;
+							abs-range = <0 3300>;
+							abs-fuzz = <4>;
+							abs-flat = <200>;
+					};
+            		};
+		};
+};
+```
 
 
