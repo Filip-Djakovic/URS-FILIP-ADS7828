@@ -56,4 +56,16 @@ Pozicionirati se u folder linux-socfpga i pokrenuti komandu
 make menuconfig
 ```
 
+Ukljuciti sledecu opciju **Device drivers -> Hardware Monitoring support -> Texas Instruments ADS7828 and compatible**
+
+Ovim smo uključili drajver za A/D konvertor, još nam preostaje da uključimo drajver za dzojstik.
+
+**Device drivers -> Input device support -> Joysticks/Gampades -> Simple joystick connected over ADC**
+
+Sačuvamo izvršene izmjene i pokrenemo komandu
+
+```
+make
+```
+
 
