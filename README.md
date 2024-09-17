@@ -68,4 +68,11 @@ Sačuvamo izvršene izmjene i pokrenemo komandu
 make
 ```
 
+Sledeće što je potrebno uraditi jeste sačuvati trenutnu konfiguraciju kao predefinisanu za našu ploču, u tu svrhu ćemo izvršiti sledeće komande
+
+```
+make savedefconfig
+mv defconfig arch/arm/configs/de1_soc_defconfig
+```
+
 
