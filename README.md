@@ -20,4 +20,6 @@
             gpios = <&gpio1 17 GPIO_ACTIVE_HIGH>;
         };
     };
-};
+}; ```
+
+#### Ovo je nastavak pisanja
