@@ -47,3 +47,13 @@ U ovom folderu u nekom od dostupnih tekst editora otvoriti fajl **socfpga_cyclon
 Ovakvim izledom dts fajla smo omogućili I2C2 magistralu.
 
 > **Note**: Obavezno dodati i2c1 čvor, jer u slučaju da njega ne dodamo, I2C2 magistrala neće biti dostupna.
+
+Nakon modifikacije dts fajla, potrebno je uključiti drajvere za naše komponente
+
+Pozicionirati se u folder linux-socfpga i pokrenuti komandu
+
+```
+make menuconfig
+```
+
+
