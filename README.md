@@ -46,4 +46,4 @@ U ovom folderu u nekom od dostupnih tekst editora otvoriti fajl **socfpga_cyclon
 
 Ovakvim izledom dts fajla smo omogućili I2C2 magistralu.
 
-> **Note**: Please ensure you have the correct permissions before proceeding.
+> ⚠️ **Warning**: This feature is experimental and may change in the future.
