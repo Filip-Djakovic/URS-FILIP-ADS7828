@@ -50,7 +50,14 @@ Da bi sve funkcionisalo, potrebno je prekompajlirati ovaj dts fajl komandom
 make dtbs
 ```
 
-I dobije .dtb fajl, koji se nalazi u istom folderu kao i nas .dts fajl prekopirati na FAT32 particiju kartice.
+I dobijeni .dtb fajl, koji se nalazi u istom folderu kao i nas .dts fajl prekopirati na FAT32 particiju kartice.
+
+Ako bi ubacili karticu u slot na ploči i pokrenuli komandu 
+```
+i2cdetect -ry 2
+```
+
+Vidijeli bi da je na adresi 53 detektovan naš A/D konvertor.
 
 > **Note**: Obavezno dodati i2c1 čvor, jer u slučaju da njega ne dodamo, I2C2 magistrala neće biti dostupna.
 
@@ -80,5 +87,12 @@ Sledeće što je potrebno uraditi jeste sačuvati trenutnu konfiguraciju kao pre
 make savedefconfig
 mv defconfig arch/arm/configs/de1_soc_defconfig
 ```
+
+Sledeći korak je da prekopiramo relevantne fajlove u naš buildroot.
+```
+cp <path-to-linux-src>/arch/arm/configs/de1_soc_defconfig board/terasic/de1soc_cyclone5/
+cp <path-to-linux-src>/arch/arm/boot/dts/socfpga_cyclone5_de1_soc.dts board/terasic/de1soc_cyclone5/
+```
+
 
 
