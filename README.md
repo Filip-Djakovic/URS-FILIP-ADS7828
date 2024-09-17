@@ -140,4 +140,41 @@ Sada je potrebno da opišemo naš uređaj u i2c2 čvoru našeg .dts fajla. Modif
 };
 ```
 
+Nakon ovoga potrebno je prekopirati sliku SD kartice sledećom komandom
 
+```
+sudo dd if=sdcard.img of=/dev/sdb bs=1M
+```
+
+> **Note**: Budući da je sistem već bio na kartici potrebno je karticu demontirati, odnosno sve njene particije, komandom **sudo umount**, a particije ćemo izlistati komandom **lsblk**.
+
+Potrebno je ponovo prekompajlirati .dts fajl i dobijeni .dtb fajl prekopirati na FAT32 particiju kartice.
+
+Nakon pokretanja sistema, pokrenućemo komandu 
+```
+i2cdetect -ry 2
+```
+
+I primjetićemo da se na adresi 53 nalazi oznaka UU, što znači da našim A/D konvertorom upravlja neka softverska komponenta.
+
+Ako izvršimo sledeću komandu
+
+```
+ls /sys/class/hwmon/hwmon0/
+```
+
+Vidjećemo da se u tom direktorijumu nalaze fajlovi koji predstavljaju napone sa kanala A/D konvertoa, za svaki kanal po jedan fajl.
+Budući da su naše ose spojene na kanale 0 i 1, nama su od interesa fajlovi **in0_input** i **in1_input**.
+
+Izlistavanjem sadržaja ovih fajlova, vidjećemo da se u njima nalaze neki vrijednosti, koje predstavljaju napone.
+
+```
+cat /sys/class/hwmon/hwmon0/in0_input
+cat /sys/class/hwmon/hwmon0/in1_input
+```
+
+Pomjeranjem dzojstika po njegovim osama, možemo primjetiti da je napon nekad 0, a nekad 3300, u zavisnosti na koju stranu pomjerimo dzojstik.
+Ovo nam govori da naš A/D konvertor uspješno čita napon i napa ga prezentuje.
+
+U svrhu demonstracije priložen je fajl readData.c koji demonstrira rad dzojstika.
+U zavisnosti od napona na X osi pali se, odnosno gasi dioda na ploči, dok se napon sa Y ose samo ispisuje.
