@@ -59,6 +59,7 @@ i2cdetect -ry 2
 
 Vidijeli bi da je na adresi 53 detektovan naš A/D konvertor.
 
+> [!NOTE]
 > **Note**: Obavezno dodati i2c1 čvor, jer u slučaju da njega ne dodamo, I2C2 magistrala neće biti dostupna.
 
 Nakon modifikacije dts fajla, potrebno je uključiti drajvere za naše komponente
