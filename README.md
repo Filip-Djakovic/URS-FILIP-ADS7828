@@ -178,3 +178,5 @@ Ovo nam govori da naš A/D konvertor uspješno čita napon i napa ga prezentuje.
 
 U svrhu demonstracije priložen je fajl readData.c koji demonstrira rad dzojstika.
 U zavisnosti od napona na X osi pali se, odnosno gasi dioda na ploči, dok se napon sa Y ose samo ispisuje.
+
+> **Note**: Za upravljanje diodom iskorišten je kod sa lab vježbi, međutim to se moglo i uraditi izmjenom relevantnih fajlova u kojima se nalazi trenutno stanje diode.
