@@ -147,6 +147,7 @@ Nakon ovoga potrebno je prekopirati sliku SD kartice sledećom komandom
 sudo dd if=sdcard.img of=/dev/sdb bs=1M
 ```
 
+> [!NOTE]
 > **Note**: Budući da je sistem već bio na kartici potrebno je karticu demontirati, odnosno sve njene particije, komandom **sudo umount**, a particije ćemo izlistati komandom **lsblk**.
 
 Potrebno je ponovo prekompajlirati .dts fajl i dobijeni .dtb fajl prekopirati na FAT32 particiju kartice.
@@ -180,4 +181,5 @@ Ovo nam govori da naš A/D konvertor uspješno čita napon i napa ga prezentuje.
 U svrhu demonstracije priložen je fajl readData.c koji demonstrira rad dzojstika.
 U zavisnosti od napona na X osi pali se, odnosno gasi dioda na ploči, dok se napon sa Y ose samo ispisuje.
 
+> [!NOTE]
 > **Note**: Za upravljanje diodom iskorišten je kod sa lab vježbi, međutim to se moglo i uraditi izmjenom relevantnih fajlova u kojima se nalazi trenutno stanje diode.
